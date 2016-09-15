@@ -122,6 +122,7 @@ Page test_page
 
                  on_event:start()
                 {
+                    regions_of_interests.reload();
                     int dt = int(now() - start_time);
                     eyetracker.print_to_data_file(start_time, "SYNCTIME " + string(dt));
                     eyetracker.print_to_data_file(start_time, string(dt) + " DISPLAY ON");
@@ -192,8 +193,8 @@ Page test_page
 
                 void copy_properties_from_to(GuiItem source, GuiItem target)
                 {
-                    target.x = source.x_abs;
-                    target.y = source.y_abs;
+                    target.x = source.x;
+                    target.y = source.y;
                     target.width = source.width;
                     target.height = source.height;
                 }
@@ -211,8 +212,7 @@ Page test_page
                 stimuli.load_all_images(filenames);
 
                 //load_image_into(stimuli_dir() + "images/" + item.image_filename, stimulus_layers.stimulus);
- 
-                regions_of_interests.reload();
+                
                 regions_of_interests.start(t);
 
                  if(HIGHLIGHT_REGION_OF_INTEREST)
