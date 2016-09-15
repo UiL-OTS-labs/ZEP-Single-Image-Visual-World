@@ -50,7 +50,7 @@ Experiment experiment
             {
                 on_event:entry()
                 {	
-                	 string dir = data_dir() + "visworldx/img/";
+                	 string dir = "data/visworldx/img/";
                 	 create_file(dir + "selected_group_" + selected_group);
                 	 
                        test_page.quick_show_and_save_picture(this, current_item, reference_time, test.cycle, dir);
