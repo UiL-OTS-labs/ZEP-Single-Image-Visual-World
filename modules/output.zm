@@ -14,6 +14,7 @@ record TestOutput
     int         target_onset;       // onset of target in sentence
     string      image_filename;         // image stimulus filename 1
     int         value;          // response value: 1=L,2=R,-1=timeout
+    int         correct;          // response value: 1=L,2=R,-1=timeout
     int         rt;             // response time [ms]
 }
 
