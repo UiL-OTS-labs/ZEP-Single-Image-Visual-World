@@ -379,11 +379,9 @@ Page test_page
             show_cursor();
     }
 
-    void quick_show_and_save_picture(Object caller, TestItem it, time tref, int count=-1, string output_directory = "/pictures")
+    void quick_show_and_save_picture(Object caller, TestItem it, time tref, int count=-1, string output_directory = "/pictures", dur allowed_time_to_export = 500ms)
     {
         item = it;
-
-        dur allowed_time_to_export= 100ms; //depending on the render speed of png export we need to delay
 
         // Show this page (if not yet done) and make tref the trial start time.
         tref = test_window1.show_test_page(this, tref + allowed_time_to_export);
