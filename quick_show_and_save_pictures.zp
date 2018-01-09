@@ -1,7 +1,8 @@
-requires 1.12;
+requires 1.14;
 
 //standards:
 import std_windows1;
+//import std_windows1a; // use this with the SMI eyetracker
 import std_entry_page1;
 import std_exit_page1;
 import std_pause_page;
