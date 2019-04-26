@@ -215,7 +215,7 @@ Page test_page
             
             regions_of_interests.start(t);
 
-             if(HIGHLIGHT_REGION_OF_INTEREST)
+            if(HIGHLIGHT_REGION_OF_INTEREST)
                 regions_of_interests.highlight_regions();
 
             // Start picture stimuli.
@@ -456,7 +456,7 @@ Page test_page
         // drift-check failure or abort we'll exit to do a recalibration.
         //SetupActionOrder(tref);
 
-         if (item.do_drift_check)
+        if (item.do_drift_check)
             drift_check_timer.start(tref);
         else 
             start_actual_presentation();
@@ -482,16 +482,15 @@ Page test_page
 
         time visstimonset = layout.start_stimulus(event_time + DC_VISUAL_DELAY);
 
-        time audstimonset = auditory_stimulus.play(visstimonset + AUDITORY_DELAY);
+        time audstimonset = auditory_stimulus.play(visstimonset);
         time audstimoffset = auditory_stimulus.expected_finish_time;
 
-        // Response window starts at onset of the audio target with a possible shift. 
-        dur response_delay = max( dur(item.target_onset) + RESPONSE_SHIFT, 0s);
+        // Response window starts at onset of the audio and picture target. 
 
-        if(RESPONSE_DURATION > 0s)
-           response.start(audstimonset + response_delay, audstimoffset + RESPONSE_DURATION); // auto paced
-        else
-             response.start(audstimonset + response_delay, RESPONSE_DURATION); // self paced
+        if(RESPONSE_DURATION > 0s) // auto paced
+            response.start(audstimonset, audstimoffset + RESPONSE_DURATION);
+        else // self paced
+            response.start(audstimonset, RESPONSE_DURATION);
 
         // Always measure relative to target onset.
         response.reference_time = audstimonset + dur(item.target_onset);
@@ -501,4 +500,5 @@ Page test_page
     {
         return SELECT_ITEMS_BY_MOUSE;
     }
+
 }
