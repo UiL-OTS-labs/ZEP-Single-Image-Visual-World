@@ -74,7 +74,10 @@ Experiment experiment
     {   
         //remember, a lot of setting up is already done in session.zm::setup_session()
         show_test_windows();
-        control.button_box.open();
+
+        if(control.button_box.open() != OK)
+            println("Unable to open button box.");
+        control.button_box.enable_all_buttons(CONTINUE);
     }
 
     on_event:message()
